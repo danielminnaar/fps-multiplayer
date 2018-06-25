@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+
+[RequireComponent(typeof(Player))]
 public class PlayerSetup : NetworkBehaviour {
 
 	[SerializeField]
@@ -21,12 +23,17 @@ public class PlayerSetup : NetworkBehaviour {
 			
 		}
 
-		string _id = "Player " + GetComponent<NetworkIdentity>().netId.ToString();
-		transform.name = _id;
+	}
+
+	public override void OnStartClient() {
+		base.OnStartClient();
+		RegisterPlayer();
 	}
 
 	private void RegisterPlayer() {
-
+		string id = GetComponent<NetworkIdentity>().netId.ToString();
+		var player = GetComponent<Player>();
+		GameManager.RegisterPlayer(id, player);
 	}
 
 	void OnDisable()
@@ -34,5 +41,9 @@ public class PlayerSetup : NetworkBehaviour {
 		if(sceneCamera != null) {
 			sceneCamera.gameObject.SetActive(true);
 		}
+
+		GameManager.DeregisterPlayer(GetComponent<NetworkIdentity>().netId.ToString());
 	}
+
+
 }

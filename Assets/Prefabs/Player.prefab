@@ -29,6 +29,8 @@ GameObject:
   - component: {fileID: 114398766395841318}
   - component: {fileID: 153948693609305038}
   - component: {fileID: 114287411545464776}
+  - component: {fileID: 114481573032156348}
+  - component: {fileID: 114938461009429266}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -420,6 +422,7 @@ MonoBehaviour:
   - {fileID: 114003698594564628}
   - {fileID: 20687381025175118}
   - {fileID: 81259396108176238}
+  - {fileID: 114287411545464776}
 --- !u!114 &114287411545464776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -431,6 +434,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a77d16f10bb6337459f6831c0215517e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  cam: {fileID: 20687381025175118}
+  weapon: {fileID: 114481573032156348}
 --- !u!114 &114338765570335264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -484,6 +492,32 @@ MonoBehaviour:
   m_MovementThreshold: 0.001
   m_InterpolateRotation: 0.3
   m_InterpolateMovement: 0.5
+--- !u!114 &114481573032156348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084396038480636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ea54abdd4d07e48bcb2c82d2c97652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Glock
+  damage: 10
+  range: 100
+--- !u!114 &114938461009429266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084396038480636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825b6c3820fb65c428870a55ad6d1e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!124 &124180612412729638
 Behaviour:
   m_ObjectHideFlags: 1
