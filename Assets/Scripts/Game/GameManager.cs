@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
+	public static GameManager instance;
+	[SerializeField]
+	private GameObject sceneCamera;
+	public MatchSettings matchSettings;
 	private static Dictionary<string, Player> players = new Dictionary<string, Player>();
 
 	public static void RegisterPlayer(string netId, Player player) {
@@ -11,6 +15,26 @@ public class GameManager : MonoBehaviour {
 		players.Add(playerId, player);
 		player.transform.name = playerId;
 	}
+
+	public void SetSceneCameraActive (bool isActive)
+	{
+		if (sceneCamera == null)
+			return;
+
+		sceneCamera.SetActive(isActive);
+	}
+
+	void Awake ()
+	{
+		if (instance != null)
+		{
+			Debug.LogError("More than one GameManager in scene.");
+		} else
+		{
+			instance = this;
+		}
+	}
+
 
 	public static Player GetPlayer(string id) {
 		return players[id];
