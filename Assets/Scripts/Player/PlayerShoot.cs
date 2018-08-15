@@ -89,6 +89,7 @@ public class PlayerShoot : NetworkBehaviour
     [Command]
     void CmdOnShoot()
     {
+        print("test");
         RpcDoShootEffect();
     }
 

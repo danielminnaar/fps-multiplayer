@@ -72,6 +72,7 @@ public class PlayerSetup : NetworkBehaviour
         Player _player = GetComponent<Player>();
 
         GameManager.RegisterPlayer(_netID, _player);
+        //GameManager.instance.SetSceneCameraActive(false);
     }
 
     private void RegisterPlayer()
